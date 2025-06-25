@@ -6,6 +6,8 @@ license = "MIT"
 readme = "./README.md"
 description = "A crate full of my shared implementations."
 exclude = ["src/main.rs"]
+repository = "https://github.com/Ozy-Viking/rusty_viking"
+documentation = "https://docs.rs/rusty_viking/latest/rusty_viking/"
 
 [dependencies]
 viking_macros = { version = "0.2", optional = true }
