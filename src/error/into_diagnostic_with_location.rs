@@ -62,7 +62,7 @@ impl ::std::fmt::Display for DiagnosticWithLocationError {
     }
 }
 
-/// Extension of [`miette::IntoDiagnostic`] trait.
+/// Replaces and extends [`miette::IntoDiagnostic`] trait to show call location.
 ///
 /// <div class="warning">
 /// Calling any of these method calls will clobber the type if it implements <a href="../../miette/protocol/trait.Diagnostic.html" title="trait miette::protocol::Diagnostic">miette::Diagnostic</a> and reduce it to <a href="https://doc.rust-lang.org/1.86.0/core/error/trait.Error.html" title="trait core::error::Error">std::error::Error</a>.

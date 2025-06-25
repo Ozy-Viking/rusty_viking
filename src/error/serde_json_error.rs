@@ -1,11 +1,5 @@
 use miette::{Report, SourceOffset, diagnostic, miette};
 
-#[derive(Debug, serde::Deserialize)]
-pub struct Library {
-    #[allow(unused)]
-    pub name: String,
-}
-
 #[derive(Debug, thiserror::Error, miette::Diagnostic)]
 #[diagnostic(code(rusty_vikings::SerdeError))]
 #[diagnostic(url(docsrs))]
@@ -31,8 +25,10 @@ impl ::std::fmt::Display for SerdeError {
 }
 
 impl SerdeError {
-    /// Takes the input and the `serde_json::Error` and returns a SerdeError
-    /// that can be rendered nicely with miette.
+    /// Takes the input and the [`serde_json::Error`] and returns a [`SerdeError`]
+    /// that can be rendered nicely with [miette].
+    ///
+    /// In dev it also shares the call location.
     #[track_caller]
     pub fn from_serde_error(
         input: impl Into<String>,
