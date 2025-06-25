@@ -16,6 +16,7 @@ pub struct DiagnosticWithLocationError {
 }
 
 impl DiagnosticWithLocationError {
+    #[allow(dead_code)]
     #[track_caller]
     pub fn new(
         source_error: Box<dyn std::error::Error + Send + Sync + 'static>,
