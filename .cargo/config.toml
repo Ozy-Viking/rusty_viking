@@ -1,0 +1,2 @@
+[alias]
+docs = "rustdoc -- --cfg docsrs"

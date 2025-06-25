@@ -1,5 +1,7 @@
+#![cfg_attr(docsrs, feature(doc_cfg))]
 use miette::{Report, SourceOffset, diagnostic, miette};
 
+/// An error type bridging between [serde_json] and [mod@miette].
 #[derive(Debug, thiserror::Error, miette::Diagnostic)]
 #[diagnostic(code(rusty_vikings::SerdeError))]
 #[diagnostic(url(docsrs))]
@@ -23,10 +25,9 @@ impl ::std::fmt::Display for SerdeError {
         write!(f, "{}", self.msg)
     }
 }
-
 impl SerdeError {
     /// Takes the input and the [`serde_json::Error`] and returns a [`SerdeError`]
-    /// that can be rendered nicely with [miette].
+    /// that can be rendered nicely with [mod@miette].
     ///
     /// In dev it also shares the call location.
     #[track_caller]

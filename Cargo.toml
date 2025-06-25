@@ -1,6 +1,6 @@
 [package]
 name = "rusty_vikings"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2024"
 license = "MIT"
 readme = "./README.md"
@@ -8,15 +8,23 @@ description = "A crate full of my shared implementations."
 exclude = ["src/main.rs"]
 
 [dependencies]
-miette = { version = "7.6.0", features = ["fancy"] }
-semver = "1.0.26"
-thiserror = "2.0.12"
+viking_macros = { version = "0.2", optional = true }
+miette = { version = "7.6.0", features = ["fancy"], optional = true }
+thiserror = { version = "2.0.12", optional = true }
 serde = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }
 
 [features]
-default = ["serde"]
-serde = ["serde/derive", "serde_json"]
+default = ["serde", "miette", "macros", "error"]
+serde = ["serde/derive", "dep:serde_json", "miette", "dep:thiserror"]
+macros = ["dep:viking_macros"]
+miette = ["dep:miette", "dep:thiserror", "error"]
+error = []
+
 
 [profile.release]
 debug = true
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

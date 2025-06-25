@@ -1,5 +1,6 @@
 use miette::SourceOffset;
 use miette::{Diagnostic, Report, SourceSpan};
+
 #[derive(Debug, thiserror::Error, Diagnostic)]
 pub struct DiagnosticWithLocationError {
     #[source]
@@ -70,9 +71,9 @@ impl ::std::fmt::Display for DiagnosticWithLocationError {
 pub trait IntoDiagnosticWithLocation<T, E> {
     /// Converts [`Result`] types that return regular [`std::error::Error`]s
     /// into a [`Result`] that returns a [`Diagnostic`].
-    ///
-
     fn into_diagnostic(self) -> Result<T, Report>;
+
+    /// Same as [`into_diagnostic`][IntoDiagnosticWithLocation::into_diagnostic] but you can add the help line at the bottom to guide the user.
     fn into_diagnostic_with_help(self, help: Option<String>) -> Result<T, Report>;
 }
 
