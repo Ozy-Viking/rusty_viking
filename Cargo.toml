@@ -1,0 +1,20 @@
+[package]
+name = "rusty_vikings"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+readme = "./README.md"
+
+[dependencies]
+miette = { version = "7.6.0", features = ["fancy"] }
+semver = "1.0.26"
+thiserror = "2.0.12"
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true }
+
+[features]
+default = ["serde"]
+serde = ["serde/derive", "serde_json"]
+
+[profile.release]
+debug = true
