@@ -2,7 +2,7 @@
 //! To add this library simply use
 //!
 //! ```sh
-//! cargo add rusty_viking
+//! cargo add rusty_vikings
 //! ```
 //!
 //! ## Features
@@ -12,7 +12,7 @@
 //! - `"macros"`: Re-exports [mod@viking_macros]
 //!
 //! ```sh
-//! cargo add rusty_viking --no-default-features
+//! cargo add rusty_vikings --no-default-features
 //! ```
 pub(crate) mod error;
 #[cfg(feature = "error")]

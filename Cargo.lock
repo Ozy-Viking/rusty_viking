@@ -200,7 +200,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rusty_vikings"
+name = "rusty_viking"
 version = "0.2.0"
 dependencies = [
  "miette",
