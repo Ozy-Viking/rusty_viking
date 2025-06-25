@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 license = "MIT"
 readme = "./README.md"
+description = "A crate full of my shared implementations."
 
 [dependencies]
 miette = { version = "7.6.0", features = ["fancy"] }
