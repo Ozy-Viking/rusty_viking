@@ -4,7 +4,7 @@ version = "0.2.0"
 edition = "2024"
 license = "MIT"
 readme = "./README.md"
-description = "A crate full of my shared implementations."
+description = "A libraty full of my shared implementations."
 exclude = ["src/main.rs"]
 repository = "https://github.com/Ozy-Viking/rusty_viking"
 documentation = "https://docs.rs/rusty_viking/latest/rusty_viking/"
@@ -17,12 +17,12 @@ serde = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }
 
 [features]
-default = ["serde", "miette", "macros", "error"]
+default = ["serde", "miette", "macros", "error", "unstable"]
 serde = ["serde/derive", "dep:serde_json", "miette", "dep:thiserror"]
 macros = ["dep:viking_macros"]
 miette = ["dep:miette", "dep:thiserror", "error"]
 error = []
-
+unstable = []
 
 [profile.release]
 debug = true

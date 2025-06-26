@@ -37,4 +37,11 @@ impl MietteDefaultConfig {
             )
         }))
     }
+
+    /// Uses [MietteDefaultConfig::init] then runs [miette::set_panic_hook].
+    pub fn init_set_panic_hook(footer: Option<String>) -> miette::Result<(), miette::InstallError> {
+        MietteDefaultConfig::init(footer)?;
+        miette::set_panic_hook();
+        Ok(())
+    }
 }
