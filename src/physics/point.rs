@@ -3,6 +3,7 @@ use super::{x::X, y::Y};
 use super::Number;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
+#[cfg_attr(feature = "valuable", derive(valuable::Valuable))]
 pub struct Point2D {
     pub x: X,
     pub y: Y,

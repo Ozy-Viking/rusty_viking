@@ -1,5 +1,5 @@
 #![cfg_attr(docsrs, feature(doc_cfg))]
-use miette::{Report, SourceOffset, diagnostic, miette};
+use miette::{Report, SourceOffset, diagnostic};
 
 /// An error type bridging between [serde_json] and [mod@miette].
 #[derive(Debug, thiserror::Error, miette::Diagnostic)]
@@ -38,12 +38,12 @@ impl SerdeError {
     ) -> Self {
         let (cat, msg) = cause.parse();
         let input = input.into();
-        #[allow(unused_assignments)]
+        #[allow(unused_assignments, unused_mut)]
         let mut caller_code: Option<Report> = None;
         #[cfg(debug_assertions)]
         {
             let caller_location = std::panic::Location::caller();
-            caller_code = Some(miette!("Error occured at: {}", caller_location));
+            caller_code = Some(miette::miette!("Error occured at: {}", caller_location));
         }
         let location = SourceOffset::from_location(&input, cause.line(), cause.column());
         Self {

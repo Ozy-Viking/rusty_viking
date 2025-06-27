@@ -4,6 +4,8 @@ use super::Number;
 
 /// Newtype Struct around [Number] for only one axis.
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
+#[cfg_attr(feature = "valuable", derive(valuable::Valuable))]
+#[valuable(transparent)]
 pub struct X(pub Number);
 
 impl X {

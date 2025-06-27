@@ -1,6 +1,7 @@
 use super::{point::Point2D, x::X, y::Y};
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
+#[cfg_attr(feature = "valuable", derive(valuable::Valuable))]
 pub struct Vector {
     x: X,
     y: Y,

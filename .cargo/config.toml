@@ -1,2 +1,5 @@
 [alias]
 docs = "rustdoc -- --cfg docsrs"
+
+[build]
+rustflags = ["--cfg", "tracing_unstable"]

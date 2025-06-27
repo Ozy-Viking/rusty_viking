@@ -1,4 +1,3 @@
-use miette::SourceOffset;
 use miette::{Diagnostic, Report, SourceSpan};
 
 #[derive(Debug, thiserror::Error, Diagnostic)]
@@ -86,6 +85,7 @@ impl<T, E: std::error::Error + Send + Sync + 'static> IntoDiagnosticWithLocation
     }
 
     fn into_diagnostic_with_help(self, help: Option<String>) -> Result<T, Report> {
+        #[allow(unused_variables)]
         let location: &'static std::panic::Location<'static> = ::std::panic::Location::caller();
         let res = self.map_err(|e| Box::new(dbg!(e)));
         if res.is_ok() {
@@ -97,8 +97,8 @@ impl<T, E: std::error::Error + Send + Sync + 'static> IntoDiagnosticWithLocation
         diagnostic_location.help = help;
         #[cfg(debug_assertions)]
         {
-            let (filepath, offset) =
-                SourceOffset::from_current_location().expect("Only accessible from dev build.");
+            let (filepath, offset) = miette::SourceOffset::from_current_location()
+                .expect("Only accessible from dev build.");
 
             let file =
                 ::std::fs::read_to_string(&filepath).expect("All files should be availble in dev.");

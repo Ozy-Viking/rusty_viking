@@ -15,14 +15,30 @@ miette = { version = "7.6.0", features = ["fancy"], optional = true }
 thiserror = { version = "2.0.12", optional = true }
 serde = { version = "1", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }
+tracing = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = [
+    "local-time",
+    "env-filter",
+], optional = true }
+valuable = { version = "0.1.1", features = ["derive"], optional = true }
 
 [features]
-default = ["serde", "miette", "macros", "error", "unstable"]
+default = [
+    "serde",
+    "miette",
+    "macros",
+    "error",
+    "tracing",
+    "valuable",
+    "physics",
+]
 serde = ["serde/derive", "dep:serde_json", "miette", "dep:thiserror"]
 macros = ["dep:viking_macros"]
 miette = ["dep:miette", "dep:thiserror", "error"]
+tracing = ["dep:tracing-subscriber"]
+valuable = ["dep:valuable", "tracing/valuable"]
 error = []
-unstable = []
+physics = []
 
 [profile.release]
 debug = true
