@@ -67,7 +67,6 @@ pub mod tracing {
         if let Some(ts) = optional_targets {
             target = target.with_targets(ts);
         }
-        dbg!(&target.to_string());
         let env_filter = tracing_subscriber::EnvFilter::try_from_default_env()
             .unwrap_or_else(|_| tracing_subscriber::EnvFilter::new(target.to_string()));
 
